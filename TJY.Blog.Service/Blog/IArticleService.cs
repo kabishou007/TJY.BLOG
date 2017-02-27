@@ -18,7 +18,17 @@ namespace TJY.Blog.Service.Blog
         /// 获得首页文章(显示时间最近的文章)
         /// </summary>
         /// <param name="articleNumber">首页文章数量</param>
-        List<Article> GetFirstPageArticles(int articleNumber);
+        List<Article> GetResentArticles(int articleNumber,int pageIndex, out int totalNumber);
+
+        /// <summary>
+        /// 通过文章标题搜索文章(模糊搜索)
+        /// </summary>
+        List<Article> GetArticlesByTitle(string articleTitle, int articleNumber, int pageIndex, out int totalNumber);
+
+        /// <summary>
+        /// 通过文章类别获取文章列表
+        /// </summary>
+        List<Article> GetArticlesByCategoryID(int categoryID, int articleNumber, int pageIndex, out int totalNumber);
 
         /// <summary>
         /// 获得阅读排行榜文章
@@ -27,13 +37,13 @@ namespace TJY.Blog.Service.Blog
         List<Article> GetTopReadArticles(int articleNumber);
 
         /// <summary>
-        /// 通过文章标题搜索文章(模糊搜索)
+        /// 点赞
         /// </summary>
-        List<Article> GetArticlesByTitle(string articleTitle,int articleNumber);
+        bool AddLike(int articleID);
 
         /// <summary>
-        /// 通过文章类别获取文章列表
+        /// 增加阅读量
         /// </summary>
-        List<Article> GetArticlesByCategoryID(int categoryID,int articleNumber);
+        bool AddReadNumber(int articleID);
     }
 }

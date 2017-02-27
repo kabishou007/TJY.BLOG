@@ -32,6 +32,9 @@ namespace TJY.Blog.Model
         [Required]
         public DateTime CreateTime { get; set; }
 
+        [DisplayName("文章的直接评论")]
+        public bool IsArticleComment { get; set; }
+
         [DisplayName("评论文章ID")]
         public int ArticleID { get; set; }
 

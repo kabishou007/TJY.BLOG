@@ -7,11 +7,11 @@ using TJY.Blog.Model;
 
 namespace TJY.Blog.Service.Admin.Implements
 {
-    internal class CommentManageService : ICommentManageService
+    internal class CommentAdminService : ICommentAdminService
     {
         #region 构造注入
         private IUnitOfWork _unitOfWork;
-        public CommentManageService(IUnitOfWork unitOfWork)
+        public CommentAdminService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -20,11 +20,14 @@ namespace TJY.Blog.Service.Admin.Implements
         #region 实现接口
         public bool DeleteComment(int commentID)
         {
-            _unitOfWork.GetRepository<Comment>().Delete(commentID);
+            if (DeleteChildComments(commentID) == false)
+            {
+                _unitOfWork.GetRepository<Comment>().Delete(commentID);
+            }
             return _unitOfWork.Commit();
         }
 
-        public bool DeleteComments(List<int> commentIDs)
+        public bool BulkDeleteComments(List<int> commentIDs)
         {
             foreach (int commentID in commentIDs)
             {
@@ -46,17 +49,12 @@ namespace TJY.Blog.Service.Admin.Implements
             return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.Article.Title == articleTitle, c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
         }
 
-        public List<Comment> GetChildComments(int parentCommentID, int pageSize, int pageIndex, out int totalCount, bool isAsc = true)
-        {
-            return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.ParentID == parentCommentID, c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
-        }
-
         public List<Comment> GetCommentsByEmail(string email, int pageSize, int pageIndex, out int totalCount, bool isAsc = true)
         {
             return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.Email == email, c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
         }
 
-        public List<Comment> GetLatestComments(int pageSize, int pageIndex, out int totalCount, bool isAsc = false)
+        public List<Comment> GetResentComments(int pageSize, int pageIndex, out int totalCount, bool isAsc = false)
         {
             return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
         }
@@ -65,6 +63,7 @@ namespace TJY.Blog.Service.Admin.Implements
         #endregion
 
 
+        #region 私有方法
         /// <summary>
         /// 删除子评论
         /// 递归：当某评论无子评论可删时，删除其本身
@@ -84,6 +83,7 @@ namespace TJY.Blog.Service.Admin.Implements
                 }
             }
             return false;
-        }
+        } 
+        #endregion
     }
 }

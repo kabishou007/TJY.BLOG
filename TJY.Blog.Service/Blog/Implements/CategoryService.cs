@@ -7,11 +7,11 @@ using TJY.Blog.Model;
 
 namespace TJY.Blog.Service.Blog.Implements
 {
-    internal class ArticleCategoryService:ICategoryService
+    internal class CategoryService:ICategoryService
     {
         #region 构造注入
         private IUnitOfWork _unitOfWork;
-        public ArticleCategoryService(IUnitOfWork unitOfWork)
+        public CategoryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         } 
@@ -19,7 +19,7 @@ namespace TJY.Blog.Service.Blog.Implements
 
 
         #region 实现接口
-        List<Category> ICategoryService.GetCategoryList()
+        List<Category> GetCategoryList()
         {
             return _unitOfWork.GetRepository<Category>().GetList().ToList();
         }

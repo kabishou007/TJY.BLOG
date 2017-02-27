@@ -7,6 +7,12 @@ using System.Text;
 
 namespace TJY.Blog.Model
 {
+    /*
+     * 0：草稿
+     * 1：发布
+     * 2：删除
+     */
+
     public class ArticleState
     {
         [DisplayName("ID")]

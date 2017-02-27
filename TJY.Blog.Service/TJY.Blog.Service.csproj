@@ -41,19 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\IAccountService.cs" />
-    <Compile Include="Admin\ICategoryManageService.cs" />
-    <Compile Include="Admin\IArticleManageService.cs" />
-    <Compile Include="Admin\Implements\AccountService.cs" />
+    <Compile Include="Admin\IAccountAdminService.cs" />
+    <Compile Include="Admin\Implements\StateAdminService.cs" />
+    <Compile Include="Admin\IStateAdminService.cs" />
+    <Compile Include="Admin\ICategoryAdminService.cs" />
+    <Compile Include="Admin\IArticleAdminService.cs" />
+    <Compile Include="Admin\Implements\AccountAdminService.cs" />
     <Compile Include="Blog\ICategoryService.cs" />
     <Compile Include="Blog\IArticleService.cs" />
     <Compile Include="Blog\IBloggerService.cs" />
-    <Compile Include="Admin\ICommentManageService.cs" />
+    <Compile Include="Admin\ICommentAdminService.cs" />
     <Compile Include="Blog\ICommentService.cs" />
-    <Compile Include="Admin\Implements\ArticleCategoryManageService.cs" />
-    <Compile Include="Admin\Implements\ArticleManageService.cs" />
-    <Compile Include="Admin\Implements\CommentManageService.cs" />
-    <Compile Include="Blog\Implements\ArticleCategoryService.cs" />
+    <Compile Include="Admin\Implements\CategoryAdminService.cs" />
+    <Compile Include="Admin\Implements\ArticleAdminService.cs" />
+    <Compile Include="Admin\Implements\CommentAdminService.cs" />
+    <Compile Include="Blog\Implements\CategoryService.cs" />
     <Compile Include="Blog\Implements\ArticleService.cs" />
     <Compile Include="Blog\Implements\BloggerService.cs" />
     <Compile Include="Blog\Implements\CommentService.cs" />

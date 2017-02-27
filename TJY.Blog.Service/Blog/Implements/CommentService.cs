@@ -18,11 +18,42 @@ namespace TJY.Blog.Service.Blog.Implements
         #endregion
 
         #region 实现接口
-        public bool CommentArticleOrReply(Comment comment)
+        public bool AddComment(Comment comment)
         {
             _unitOfWork.GetRepository<Comment>().Add(comment);
             return _unitOfWork.Commit();
         }
+
+        public List<Comment> GetCommentsByArticleID(int articleID, int commentNumber, int pageIndex, out int totalNumber)
+        {
+            List<Comment> comments = _unitOfWork.GetRepository<Comment>().GetPageList(c => c.ArticleID == articleID && c.IsArticleComment == true, commentNumber, pageIndex, out totalNumber).ToList();
+            if (comments.Count>0)
+            {
+                foreach (Comment comment in comments)
+                {
+                    comment.ChildComments = GetChildComments(comment.ID);
+                }
+            }
+            return comments;
+        }
+        #endregion
+
+        #region 私有方法
+        /// <summary>
+        /// 递归获取所有子评论
+        /// </summary>
+        private List<Comment> GetChildComments(int parentCommentID)
+        {
+            List<Comment> comments = _unitOfWork.GetRepository<Comment>().GetList(c => c.ParentID == parentCommentID).ToList();
+            if (comments.Count > 0)
+            {
+                foreach (Comment comment in comments)
+                {
+                    comment.ChildComments = GetChildComments(comment.ID);
+                }
+            }
+            return comments;
+        } 
         #endregion
     }
 }
