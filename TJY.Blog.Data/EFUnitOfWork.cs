@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MMS.Data
+namespace  TJY.Blog.Data
 {
     internal class EFUnitOfWork:IUnitOfWork
     {
-        private DatabaseContext _context;
+        private EFDatabaseContext _context;
         private Dictionary<string, object> _repositoryPool;
         private bool _isDisposed;
 
-        public UnitOfWork()
+        public EFUnitOfWork()
         {
-            _context = new DatabaseContext();
-            //_context = context;
+            _context = new EFDatabaseContext();
             _repositoryPool = new Dictionary<string, object>();
             _isDisposed = false;
         }
@@ -39,14 +38,6 @@ namespace MMS.Data
         public bool Commit()
         {
             return _context.SaveChanges() > 0;
-            //StringBuilder sbSQL = new StringBuilder();
-            ////Database.Log属性为Action委托属性，指向一个方法。
-            ////EF会在一次数据库操作中，多次调用这个委托方法，可以记录执行的SQL语句，执行开始时间，执行结果，生成的查询参数等内容
-            //_context.Database.Log = (text) =>{sbSQL.Append(text);};
-            //_context.SaveChanges();
-            //int userID = ((SessionUser)SessionHelper.GetSession("CurrentUser")).UserID;
-            //string operateSQL = sbSQL.ToString();
-            ////Logger.LogOperation(userID, operateSQL);
         }
 
 

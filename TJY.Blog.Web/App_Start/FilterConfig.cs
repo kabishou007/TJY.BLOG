@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using TJY.Blog.Web.Filters;
 
 namespace TJY.Blog.Web
 {
@@ -7,7 +8,10 @@ namespace TJY.Blog.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //filters.Add(new HandleErrorAttribute());
+            //注册自定义过滤器
+            filters.Add(new CustomAuthorizeAttribute());
+            filters.Add(new CustomExceptionAttribute());
         }
     }
 }

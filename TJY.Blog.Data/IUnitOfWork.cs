@@ -1,7 +1,7 @@
-﻿using MMS.Infrastructure;
+﻿using TJY.Blog.Common;
 using System;
 
-namespace MMS.Data
+namespace TJY.Blog.Data
 {
     public interface IUnitOfWork:IDependency, IDisposable
     {

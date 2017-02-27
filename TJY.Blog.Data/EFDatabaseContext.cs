@@ -1,25 +1,31 @@
-﻿using MMS.Models;
+﻿using TJY.Blog.Model;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using TJY.Blog.Data.ModelMap;
 
 
-namespace MMS.Data
+namespace TJY.Blog.Data
 {
     internal class EFDatabaseContext : DbContext
     {
-        public EFDatabaseContext() : base("name=DatabaseContext")
+        public EFDatabaseContext() : base("name=EFDatabaseContext")
         {
             //实体模型改变时，自动迁移到最新版本
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, Migrations.Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFDatabaseContext, Migrations.Configuration>());
+            //实体模型改变时，重建数据库
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFDatabaseContext>());
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Permission> Permissions { get; set; }
-        public DbSet<Department> Departments { get; set; }
+        public DbSet<Account> Users { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Category> ArticleCategories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new ArticleMap());
+            modelBuilder.Configurations.Add(new CommentMap());
+
             //指定单数形式的表名
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
@@ -31,5 +37,6 @@ namespace MMS.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

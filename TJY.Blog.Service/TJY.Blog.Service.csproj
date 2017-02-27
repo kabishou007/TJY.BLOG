@@ -41,8 +41,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\IAccountService.cs" />
+    <Compile Include="Admin\ICategoryManageService.cs" />
+    <Compile Include="Admin\IArticleManageService.cs" />
+    <Compile Include="Admin\Implements\AccountService.cs" />
+    <Compile Include="Blog\ICategoryService.cs" />
+    <Compile Include="Blog\IArticleService.cs" />
+    <Compile Include="Blog\IBloggerService.cs" />
+    <Compile Include="Admin\ICommentManageService.cs" />
+    <Compile Include="Blog\ICommentService.cs" />
+    <Compile Include="Admin\Implements\ArticleCategoryManageService.cs" />
+    <Compile Include="Admin\Implements\ArticleManageService.cs" />
+    <Compile Include="Admin\Implements\CommentManageService.cs" />
+    <Compile Include="Blog\Implements\ArticleCategoryService.cs" />
+    <Compile Include="Blog\Implements\ArticleService.cs" />
+    <Compile Include="Blog\Implements\BloggerService.cs" />
+    <Compile Include="Blog\Implements\CommentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TJY.Blog.Common\TJY.Blog.Common.csproj">
+      <Project>{44f335b3-6fae-4a7f-99da-dd55ccea7788}</Project>
+      <Name>TJY.Blog.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TJY.Blog.Data\TJY.Blog.Data.csproj">
+      <Project>{0ff92c83-b40c-42db-bb88-0ebd6052e83c}</Project>
+      <Name>TJY.Blog.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TJY.Blog.Model\TJY.Blog.Model.csproj">
+      <Project>{46630e79-ced2-45fe-bd50-a17e7f4b13ab}</Project>
+      <Name>TJY.Blog.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

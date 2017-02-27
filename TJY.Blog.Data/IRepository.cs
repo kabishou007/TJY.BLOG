@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MMS.Infrastructure;
 using System.Linq.Expressions;
+using TJY.Blog.Common;
 
-namespace MMS.Data
+namespace TJY.Blog.Data
 {
     public interface IRepository<TEntity>:IDependency where TEntity:class
     {
@@ -17,15 +17,7 @@ namespace MMS.Data
         #region 列表查询
         IQueryable<TEntity> GetList();
         IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate);
-        //IQueryable<TEntity> FindList(Expression<Func<TEntity, bool>> predicate,int number);
-
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, TOrder>> order, bool isAsc);
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, TOrder>> order, bool isAsc, int number);
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, TOrder>> order, bool isAsc, int number,string[] includeProperties);
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TOrder>> order, bool isAsc);
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TOrder>> order, bool isAsc, int number);
-        //IQueryable<TEntity> FindList<TOrder>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TOrder>> order, bool isAsc, int number,string[] includeProperties);
-
+        
         IQueryable<TEntity> GetPageList(Expression<Func<TEntity, bool>> predicate, int pageSize, int pageIndex, out int totalCount);
         IQueryable<TEntity> GetPageList(Expression<Func<TEntity, bool>> predicate, int pageSize, int pageIndex, out int totalCount, string[] includeProperties);
 

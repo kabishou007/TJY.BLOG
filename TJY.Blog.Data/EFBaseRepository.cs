@@ -5,13 +5,13 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace MMS.Data
+namespace TJY.Blog.Data
 {
     internal class EFBaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private DbContext _context;
         private DbSet<TEntity> _dbSet;
-        public EFBaseRepository(DatabaseContext context)
+        public EFBaseRepository(EFDatabaseContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();

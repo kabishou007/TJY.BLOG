@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace TJY.Blog.Common
+namespace TJY.Blog.Web.Helpers
 {
     public class SessionHelper
     {
@@ -19,8 +19,8 @@ namespace TJY.Blog.Common
         /// </summary>
         /// <param name="sessionName">session名</param>
         /// <param name="sessionValue">要设置的session值</param>
-        /// <param name="expireTime">超时分钟(默认1440分钟，即24小时)</param>
-        public static void SetSession(string sessionName, object sessionValue, int expireTime=1440)
+        /// <param name="expireTime">超时分钟(默认20分钟)</param>
+        public static void SetSession(string sessionName, object sessionValue, int expireTime=20)
         {
             HttpContext.Current.Session.Remove(sessionName);
             HttpContext.Current.Session.Add(sessionName, sessionValue);

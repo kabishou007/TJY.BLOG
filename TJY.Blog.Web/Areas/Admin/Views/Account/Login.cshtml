@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TJY Blog后台登录</title>
+  <link href="~/Content/styles/zui.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center">TJY Blog后台登录</h2>
+    <p class="text-center">Developed By Kevin Tang</p>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+        <h4><i class="icon icon-coffee"></i> 请登录</h4>
+        <hr />
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon icon-user"></i></span>
+          <input id="loginName" type="text" class="form-control" placeholder="请输入登录名..." autofocus>
+        </div>
+        <br />
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon icon-lock"></i></span>
+          <input id="password" type="password" class="form-control" placeholder="请输入用密码...">
+        </div>
+        <br />
+        <a href="/Admin/Account/ForgetPassword">忘记密码？</a>
+        <button id="loginButton" class="btn btn-primary btn-lg btn-block" type="button"><i class="icon icon-signin"></i> 登    录</button>
+      </div>
+    </div><!--row-->
+  </div>
+  <!--信息提示框-->
+  <div class="modal fade" id="infoModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">提示</h4>
+        </div>
+        <div class="modal-body">
+          <p id="infoContent"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div><!--modal end-->
+
+
+  <script src="~/Content/scripts/jquery.js"></script>
+  <script src="~/Content/scripts/zui.min.js"></script>
+  <script>
+    $().ready(function () {
+      $("#infoModal").modal("hide");
+    });
+    //页面绑定enter为点击登录按钮的动作
+    $(document.body).bind("keydown", function (e) {
+      // 兼容FF和IE和Opera
+      var theEvent = e || window.event;
+      var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+      if (code == 13) {//13代表enter键
+        $("#loginButton").click();
+      }
+    });
+
+    function ShowInfoModal(msg) {
+      $("#infoContent").html(msg);
+      $("#infoModal").modal("show");
+    }
+
+    //登录按钮
+    $("#loginButton").click(function () {
+      var loginName = $("#loginName").val();
+      var password = $("#password").val();
+      if (loginName.length <= 0 || password.length <= 0) {
+        ShowInfoModal("用户名或密码忘记填啦~");
+        return;
+      }
+      //ajax登录
+      $.ajax({
+        url: "/Account/Login",
+        type: "POST",
+        data: {
+          loginName: loginName,
+          password: password
+        },
+        dataType: "json",
+        success: function (data) {
+          if (data.Result == false) {
+            ShowInfoModal(data.Msg);//登录失败时显示失败信息
+          } else {
+            window.location.href = data.Data;//登录成功时根据服务器返回的url跳转
+          }
+        },
+        error: function (textStatus, errorThrown) {
+          ShowInfoModal(textStatus + "|" + errorThrown);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

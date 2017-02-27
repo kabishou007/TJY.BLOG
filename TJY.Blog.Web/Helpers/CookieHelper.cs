@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace TJY.Blog.Common
+namespace TJY.Blog.Web.Helpers
 {
     public class CookieHelper
     {
