@@ -21,14 +21,15 @@ namespace TJY.Blog.Web.Filters
             #region 验证用户是否登录
             if (!isLogin)
             {
-                filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您还没有登录，或者长时间没有操作了，即将跳转到登录界面！');window.top.location='/'; </script>");
-                filterContext.RequestContext.HttpContext.Response.End();
-                filterContext.Result = new RedirectResult("Admin/Account/Login");
-                return;
+                //filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您还没有登录，或者长时间没有操作了，即将跳转到登录界面！');window.top.location='/'; </script>");
+                //filterContext.RequestContext.HttpContext.Response.End();
+                //filterContext.Result = new RedirectToRouteResult()
+                filterContext.Result = new RedirectResult("/Admin/Account/Login");
+                //return;
             }
             #endregion
 
-            base.OnAuthorization(filterContext);
+            //base.OnAuthorization(filterContext);
         }
     }
 }

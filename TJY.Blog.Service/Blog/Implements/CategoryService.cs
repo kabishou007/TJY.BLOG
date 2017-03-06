@@ -19,7 +19,7 @@ namespace TJY.Blog.Service.Blog.Implements
 
 
         #region 实现接口
-        List<Category> GetCategoryList()
+        public List<Category> GetCategoryList()
         {
             return _unitOfWork.GetRepository<Category>().GetList().ToList();
         }

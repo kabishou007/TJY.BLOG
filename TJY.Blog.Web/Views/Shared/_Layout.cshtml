@@ -1,13 +1,42 @@
 ﻿<!DOCTYPE html>
-
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_Layout.cshtml</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>TJY Blog</title>
+  <link href="~/Content/images/kabishou.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+  <link href="~/Content/css/blog.layout.css" rel="stylesheet" />
+  @RenderSection("css", required: false);
 </head>
+
 <body>
-    <div>
-        
+  <div class="header">
+    <!--logo待将文字替换成img-->
+    <span><a class="logo" href="" style="color:green;text-align: center">TJY Blog</a></span>
+    <div class="layui-inline header-tool">
+      <ul class="layui-nav layui-inline">
+        <li class="layui-nav-item layui-this"><a href="">主页</a></li>
+        <li class="layui-nav-item"><a href="">关于</a></li>
+      </ul>
+      <div class="layui-input-inline" style="width: 200px">
+        <input type="text" name="title" placeholder="请输入搜索关键词..." class="layui-input">
+      </div>
+      <button layui-submit class="layui-btn layui-btn-normal">GO</button>
     </div>
+  </div>
+  <div class="main">
+    @RenderBody()
+  </div>
+  <div class="layui-footer">
+    这是页脚
+  </div>
+
+
+  <script src="~/Content/layui/lay/dest/layui.all.js"></script>
+  <script src="~/Content/js/blog.layout.js"></script>
+  @RenderSection("js", required: false)
 </body>
+
 </html>

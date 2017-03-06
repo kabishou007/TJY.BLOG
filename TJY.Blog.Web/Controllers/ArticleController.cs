@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TJY.Blog.Model;
 using TJY.Blog.Service.Blog;
+using TJY.Blog.Web.Models;
 
 namespace TJY.Blog.Web.Controllers
 {
@@ -24,26 +25,10 @@ namespace TJY.Blog.Web.Controllers
         /// </summary>
         public ActionResult Index(int articleId)
         {
+            _articleService.AddReadNumber(articleId);
             Article article = _articleService.GetArticleByID(articleId);
+            ViewBag.CommentCount = article.Comments.Count;
             return View(article);
-        }
-
-        /// <summary>
-        /// 加载评论
-        /// </summary>
-        [HttpGet]
-        public ActionResult Comment(int articleId)
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// 评论文章
-        /// </summary>
-        [HttpPost]
-        public ActionResult Comment(Comment comment)
-        {
-            return View();
         }
 
         /// <summary>
@@ -52,7 +37,24 @@ namespace TJY.Blog.Web.Controllers
         [HttpPost]
         public ActionResult Like(int articleId)
         {
-            return View();
+            OperateResult or = new OperateResult();
+            or.IsSuccess=_articleService.AddLike(articleId);
+            if (or.IsSuccess)
+            {
+                or.Data = _articleService.GetArticleByID(articleId).Like;
+            }
+            return Json(or,JsonRequestBehavior.DenyGet);
         }
+
+        /// <summary>
+        /// 首页-阅读排行榜
+        /// </summary>
+        [ChildActionOnly]
+        public ActionResult TopReadList()
+        {
+            List<Article> list = _articleService.GetTopReadArticles(10);
+            return PartialView(list);
+        }
+
     }
 }

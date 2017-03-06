@@ -1,0 +1,31 @@
+﻿@*博客主页*@
+
+<div class="side">
+  @*博主介绍*@
+  <div class="side-block layui-bg-green">
+    <p><i class="layui-icon">&#xe612; Kevin Tang</i></p>
+    <hr>
+    <div style="text-align:center;padding:5px 10px;">
+      <img class="layui-circle" src="~/Content/images/kabiImg.jpg" />
+    </div>
+    <p><i class="layui-icon">&#xe62e; 这里是我的自我介绍，但是我现在不知道写什么，就酱</i></p>
+  </div>
+  @*阅读排行*@
+  <div class="side-block">
+    @{Html.RenderAction("TopReadList", "Article");}
+  </div>
+  @*文章分类*@
+  <div class="side-block">
+    @{Html.RenderAction("CategoryList", "Category");}
+  </div>
+</div>
+@*文章区域*@
+<div class="article-container">
+  @{Html.RenderAction("ResentArticles", "Search");}
+</div>
+
+
+
+@section css{
+  <link href="~/Content/css/blog.index.css" rel="stylesheet" />
+}

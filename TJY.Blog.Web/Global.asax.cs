@@ -12,12 +12,11 @@ namespace TJY.Blog.Web
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+            AutofacConfig.Register();
 
+            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            AutofacConfig.Register();
         }
     }
 }

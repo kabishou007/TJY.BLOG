@@ -1,0 +1,11 @@
+body{
+  background-color: #f2f2f2;
+}
+
+.layui-elem-field {
+  width:400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+

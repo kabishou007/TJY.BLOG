@@ -10,9 +10,12 @@ namespace TJY.Blog.Web.Filters
 {
     public class CustomExceptionAttribute : HandleErrorAttribute
     {
-
-        #region 属性注入
-        public ILogger Logger { get; set; } 
+        #region 注入
+        private ILogger _logger;
+        public CustomExceptionAttribute(ILogger logger)
+        {
+            _logger = logger;
+        }
         #endregion
 
         public override void OnException(ExceptionContext filterContext)
@@ -29,7 +32,7 @@ namespace TJY.Blog.Web.Filters
                 exp = exp.InnerException;
             }
             //记录异常日志
-            Logger.LogError(filterContext.HttpContext.Request.RawUrl, exp.Message);
+            _logger.LogError(exp,filterContext.HttpContext.Request.Url.ToString());
             //Ajax请求发生异常时,返回错误信息的json
             if (filterContext.HttpContext.Request.IsAjaxRequest())
             {
@@ -37,8 +40,8 @@ namespace TJY.Blog.Web.Filters
                 jsonResult.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
                 jsonResult.Data = new OperateResult()
                 {
-                    Result = false,
-                    Msg = exp.Message
+                    IsSuccess = false,
+                    Data = exp.Message
                 };
                 filterContext.Result = jsonResult;
             }

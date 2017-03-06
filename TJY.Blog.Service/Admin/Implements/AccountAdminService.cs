@@ -32,6 +32,18 @@ namespace TJY.Blog.Service.Admin.Implements
             return _unitOfWork.Commit();
         }
 
+        public bool ModifyPwd(string oldPwd, string newPwd)
+        {
+            Account account=_unitOfWork.GetRepository<Account>().GetList().FirstOrDefault();
+            if (account.Password==new AESCrypt().Encrypt(oldPwd))
+            {
+                account.Password = new AESCrypt().Encrypt(newPwd);
+                return true;
+            }
+            return false;
+        }
+
+
         public bool ForgetPwd()
         {
             //TODO:使用邮件服务，将密码发送至账户指定邮箱

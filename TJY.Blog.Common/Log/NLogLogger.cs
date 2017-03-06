@@ -11,36 +11,67 @@ namespace TJY.Blog.Common
     {
         private static readonly NLog.Logger _logger = LogManager.GetCurrentClassLogger();
 
-
-        public void LogTrace(string logMsg, params object[] parameters)
+        #region 实现接口
+        public void LogTrace(Exception exp, string msg)
         {
-            _logger.Trace(logMsg, parameters);
+            _logger.Error(exp, msg);
         }
 
-        public void LogDebug(string logMsg, params object[] parameters)
+        public void LogDebug(Exception exp, string msg)
         {
-            _logger.Debug(logMsg, parameters);
+            _logger.Error(exp, msg);
         }
 
-        public void LogInfo(string logMsg, params object[] parameters)
+        public void LogInfo(Exception exp, string msg)
         {
-            _logger.Info(logMsg, parameters);
+            _logger.Error(exp, msg);
         }
 
-        public void LogWarn(string logMsg, params object[] parameters)
+        public void LogWarn(Exception exp, string msg)
         {
-            _logger.Warn(logMsg, parameters);
+            _logger.Error(exp, msg);
         }
 
-        public void LogError(string logMsg, params object[] parameters)
+        public void LogError(Exception exp, string msg)
         {
-            _logger.Error(logMsg, parameters);
+            _logger.Error(exp, msg);
         }
 
-        public void LogFatal(string logMsg, params object[] parameters)
+        public void LogFatal(Exception exp, string url)
         {
-            _logger.Fatal(logMsg, parameters);
+            _logger.Error(exp, url);
         }
+
+        public void LogTrace(string msg)
+        {
+            _logger.Trace(msg);
+        }
+
+        public void LogDebug(string msg)
+        {
+            _logger.Debug(msg);
+        }
+
+        public void LogInfo(string msg)
+        {
+            _logger.Info(msg);
+        }
+
+        public void LogWarn(string msg)
+        {
+            _logger.Warn(msg);
+        }
+
+        public void LogError(string msg)
+        {
+            _logger.Error(msg);
+        }
+
+        public void LogFatal(string msg)
+        {
+            _logger.Fatal(msg);
+        } 
+        #endregion
     }
 }
 

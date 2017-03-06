@@ -10,8 +10,8 @@ namespace TJY.Blog.Web
         {
             //filters.Add(new HandleErrorAttribute());
             //注册自定义过滤器
-            filters.Add(new CustomAuthorizeAttribute());
-            filters.Add(new CustomExceptionAttribute());
+            filters.Add(DependencyResolver.Current.GetService<CustomExceptionAttribute>());
+            
         }
     }
 }

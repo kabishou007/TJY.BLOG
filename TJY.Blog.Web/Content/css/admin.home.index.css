@@ -1,0 +1,59 @@
+.header {
+    height:60px;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background:#393D49;
+}
+
+.header ul{
+    height:60px;
+    float:right;
+    background:#393D49;
+}
+
+.logo{
+    width:100px;
+    float: left;
+    margin-left: 5%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.logo span{
+    margin-left: .12in;
+    font-size: .25in;
+    font-weight: 700;
+    color: #4cc5e1;
+    font-family: Delius Unicase,serif;
+}
+
+.side{
+    width:15%;
+    position: fixed;
+    top:60px;
+    bottom:0;
+    left:0;
+    border-radius: 0;
+    background: #009688;
+}
+
+.main{
+    width:85%;
+    position: fixed;
+    top:60px;
+    bottom:0;
+    right:0;
+}
+
+.layui-tab{
+    margin-top: 0;
+    margin-bottom: 10px;
+    height: 100%;
+    width:100%;
+}
+
+.layui-tab-content{
+    height:100%;
+}

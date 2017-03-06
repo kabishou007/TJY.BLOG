@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using TJY.Blog.Common;
 
 namespace TJY.Blog.Web.Helpers
 {

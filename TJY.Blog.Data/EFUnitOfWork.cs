@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using TJY.Blog.Common;
 
 namespace  TJY.Blog.Data
 {
     internal class EFUnitOfWork:IUnitOfWork
     {
-        private EFDatabaseContext _context;
-        private Dictionary<string, object> _repositoryPool;
-        private bool _isDisposed;
+        private EFDatabaseContext _context;//数据库上下文
+        private Dictionary<string, object> _repositoryPool;//仓储池
+        private bool _isDisposed;//资源释放标志
+        private ILogger _logger;//日志记录者
 
-        public EFUnitOfWork()
+        public EFUnitOfWork(ILogger logger)
         {
             _context = new EFDatabaseContext();
             _repositoryPool = new Dictionary<string, object>();
             _isDisposed = false;
+            _logger = logger;
         }
 
         /*
@@ -34,10 +37,19 @@ namespace  TJY.Blog.Data
             return repository as EFBaseRepository<TEntity>;
         }
         
-
+        /// <summary>
+        /// 完成事务提交(内部记录操作日志)
+        /// </summary>
         public bool Commit()
         {
-            return _context.SaveChanges() > 0;
+            string logMsg="";
+            _context.Database.Log = (text) => { logMsg += text; };//委托添加ef执行的sql到logMsg
+            bool result= _context.SaveChanges() > 0;
+            if (result)
+            {
+                _logger.LogInfo(logMsg);
+            }
+            return result;
         }
 
 
@@ -59,7 +71,7 @@ namespace  TJY.Blog.Data
                 }
             }
             _isDisposed = true;
-        } 
+        }
         #endregion
 
     }

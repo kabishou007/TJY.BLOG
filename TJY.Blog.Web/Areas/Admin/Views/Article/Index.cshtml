@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>TJY BLOG 文章管理</title>
+  <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+  <link href="~/Content/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="~/Content/css/admin.article.index.css" rel="stylesheet" />
+</head>
+
+<body>
+  <fieldset class="layui-elem-field layui-field-title">
+    <legend>文章管理</legend>
+    <div class="layui-field-box">
+      <div class="toolBar">
+        <blockquote class="layui-elem-quote">
+          <!--查看、编辑、删除三个按钮，放在表格里，作为按钮组-->
+          <button class="layui-btn layui-btn-small"><i class="layui-icon">&#x1002;</i> 刷新</button>
+          <button class="layui-btn layui-btn-danger layui-btn-small"><i class="layui-icon">&#xe640;</i> 批量删除</button>
+          <form class="layui-form" style="float: right">
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <select name="searchmethod" style="width:100px;">
+                  <option value="title" selected>按标题查询</option>
+                  <option value="category">按分类查询</option>
+                </select>
+              </div>
+              <div class="layui-inline" id="searchBox">
+                <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="searchword" placeholder="请输入标题关键词" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+            </div>
+            <button class="layui-btn layui-btn-small" id="searchbtn"><i class="layui-icon">&#xe615;</i> 查询</button>
+          </form>
+        </blockquote>
+      </div><!--toolBar end-->
+      <div class="tableContainer">
+        <table id="table" class="display"></table>
+      </div><!--tableContainer end-->
+    </div><!--layui-field-box end-->
+  </fieldset>
+
+
+  <script src="~/Content/layui/lay/dest/layui.all.js"></script>
+  <script src="~/Content/datatables/js/jquery.dataTables.min.js"></script>
+  <script src="~/Content/js/admin.article.index.js"></script>
+</body>
+
+</html>

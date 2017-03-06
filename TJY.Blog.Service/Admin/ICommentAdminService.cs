@@ -53,6 +53,16 @@ namespace TJY.Blog.Service.Admin
         /// <param name="totalCount">总记录数</param>
         /// <param name="isAsc">是否升序排列(默认true)</param>
         List<Comment> GetCommentsByEmail(string email, int pageSize, int pageIndex, out int totalCount, bool isAsc = true);
+        
+        /// <summary>
+        /// 通过评论内容查询评论列表（分页，按日期排列）
+        /// </summary>
+        /// <param name="content">评论内容</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="totalCount">总记录数</param>
+        /// <param name="isAsc">是否升序排列(默认true)</param>
+        List<Comment> GetCommentsByContent(string content, int pageSize, int pageIndex, out int totalCount, bool isAsc = true);
 
         /// <summary>
         /// 获取最新评论列表

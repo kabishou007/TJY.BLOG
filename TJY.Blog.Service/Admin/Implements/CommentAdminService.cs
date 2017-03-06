@@ -54,6 +54,11 @@ namespace TJY.Blog.Service.Admin.Implements
             return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.Email == email, c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
         }
 
+        public List<Comment> GetCommentsByContent(string content, int pageSize, int pageIndex, out int totalCount, bool isAsc = true)
+        {
+            return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.Content.Contains(content), c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();
+        }
+
         public List<Comment> GetResentComments(int pageSize, int pageIndex, out int totalCount, bool isAsc = false)
         {
             return _unitOfWork.GetRepository<Comment>().GetPageList<DateTime>(c => c.CreateTime, isAsc, pageSize, pageIndex, out totalCount).ToList();

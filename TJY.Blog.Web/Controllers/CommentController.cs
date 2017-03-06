@@ -18,26 +18,27 @@ namespace TJY.Blog.Web.Controllers
         }
 
         /// <summary>
-        /// 增加评论-展示
+        /// 加载评论
         /// </summary>
-        [HttpGet]
-        public ActionResult Add()
+        public ActionResult CommentList(int articleId)
         {
-            return View();
+            return PartialView("_CommentList",articleId);
         }
 
         /// <summary>
-        /// 增加评论
+        /// 评论文章
         /// </summary>
         [HttpPost]
-        public ActionResult Add(Comment comment)
+        public ActionResult Comment(Comment comment)
         {
             OperateResult or = new OperateResult();
-            or.Result = _commentService.CommentArticleOrReply(comment);
-            or.Msg=or.Result?"评论成功":"评论失败了";
-            return Json(or, JsonRequestBehavior.DenyGet);
+            or.IsSuccess=_commentService.AddComment(comment);
+            if (or.IsSuccess)//评论成功时，返回新的commentlist给前台刷新
+            {
+                //TODO:考虑怎么动态刷新评论数
+                or.Data=PartialView("_CommentList",comment.ArticleID);
+            }
+            return Json(or,JsonRequestBehavior.DenyGet);
         }
-
-
     }
 }

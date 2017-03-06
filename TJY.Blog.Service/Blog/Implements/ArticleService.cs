@@ -31,7 +31,7 @@ namespace TJY.Blog.Service.Blog.Implements
         public List<Article> GetTopReadArticles(int articleNumber)
         {
             int totalCount;
-            return _unitOfWork.GetRepository<Article>().GetPageList<int>(a => a.ReaderNumber, false, articleNumber, pageIndex, out totalCount).ToList();
+            return _unitOfWork.GetRepository<Article>().GetPageList<int>(a => a.ReaderNumber, false, articleNumber, 1, out totalCount).ToList();
         }
 
         public List<Article> GetArticlesByTitle(string articleTitle, int articleNumber, int pageIndex, out int totalNumber)

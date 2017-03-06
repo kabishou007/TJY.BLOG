@@ -46,6 +46,7 @@
     <Compile Include="ArticleState.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="OperationLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Account.cs" />
   </ItemGroup>
