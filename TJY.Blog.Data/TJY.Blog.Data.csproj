@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\TJY.Blog.Web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -54,6 +54,11 @@
     <Compile Include="EFDatabaseContext.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Migrations\201703061358172_InitialCreate.cs" />
+    <Compile Include="Migrations\201703061358172_InitialCreate.Designer.cs">
+      <DependentUpon>201703061358172_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelMap\ArticleMap.cs" />
     <Compile Include="ModelMap\CommentMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +77,11 @@
       <Project>{46630e79-ced2-45fe-bd50-a17e7f4b13ab}</Project>
       <Name>TJY.Blog.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703061358172_InitialCreate.resx">
+      <DependentUpon>201703061358172_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

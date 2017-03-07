@@ -37,6 +37,7 @@ namespace TJY.Blog.Service.Admin.Implements
                 article.StateID = publishStateID;
             }
             _unitOfWork.GetRepository<Article>().Add(article);
+            ModifyArticleCount(article.CategoryID, true);
             return _unitOfWork.Commit();
         }
 
@@ -57,6 +58,8 @@ namespace TJY.Blog.Service.Admin.Implements
         {
             int deleteStateID = _unitOfWork.GetRepository<ArticleState>().Get(s => s.Name == "删除").ID;
             ChangeState(articleID, deleteStateID);
+            int categoryId = _unitOfWork.GetRepository<Article>().Get(articleID).CategoryID;
+            ModifyArticleCount(categoryId, false);
             return _unitOfWork.Commit();
         }
 
@@ -66,6 +69,8 @@ namespace TJY.Blog.Service.Admin.Implements
             foreach (int articleID in articleIDs)
             {
                 ChangeState(articleID, deleteStateID);
+                int categoryId = _unitOfWork.GetRepository<Article>().Get(articleID).CategoryID;
+                ModifyArticleCount(categoryId, false);
             }
             return _unitOfWork.Commit();
         }
@@ -101,6 +106,18 @@ namespace TJY.Blog.Service.Admin.Implements
             article.StateID = stateID;
             _unitOfWork.GetRepository<Article>().Edit(article, new string[] { "StateID" });
         } 
+
+        /// <summary>
+        /// 改变某分类文章数量
+        /// </summary>
+        /// <param name="categoryId">分类Id</param>
+        /// <param name="isIncrease">是否增加数量</param>
+        private void ModifyArticleCount(int categoryId,bool isIncrease)
+        {
+            Category category=_unitOfWork.GetRepository<Category>().Get(categoryId);
+            category.ArticleCount = isIncrease ? category.ArticleCount + 1 : category.ArticleCount - 1;
+            _unitOfWork.GetRepository<Category>().Edit(category, new string[] { "ArticleCount" });
+        }
         #endregion
     }
 }

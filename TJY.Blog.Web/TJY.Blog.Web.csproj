@@ -129,7 +129,6 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Filters\CustomExceptionAttribute.cs" />
@@ -142,6 +141,7 @@
     <Compile Include="Models\DatatableResult.cs" />
     <Compile Include="Models\OperateResult.cs" />
     <Compile Include="Models\Pagination.cs" />
+    <Compile Include="Models\VMLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +150,7 @@
     <Content Include="Content\css\admin.article.index.css" />
     <Content Include="Content\css\admin.home.index.css" />
     <Content Include="Content\css\admin.login.css" />
+    <Content Include="Content\css\blog.article.css" />
     <Content Include="Content\css\blog.index.css" />
     <Content Include="Content\css\blog.layout.css" />
     <Content Include="Content\datatables\css\jquery.dataTables.min.css" />
@@ -165,6 +166,7 @@
     <Content Include="Content\js\admin.article.index.js" />
     <Content Include="Content\js\admin.home.index.js" />
     <Content Include="Content\js\admin.login.js" />
+    <Content Include="Content\js\blog.article.js" />
     <Content Include="Content\js\blog.layout.js" />
     <Content Include="Content\layui\css\layui.css" />
     <Content Include="Content\layui\css\layui.mobile.css" />
@@ -320,7 +322,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Comment\_CommentList.cshtml" />
+    <Content Include="Views\Comment\CommentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Article\Index.cshtml" />

@@ -68,6 +68,20 @@ namespace TJY.Blog.Web.Controllers
             return PartialView("ArticleList", list);
         }
 
+        /// <summary>
+        /// 首页-最新文章列表（第一次加载首页时使用，后续请求用Search/ArticleList）
+        /// </summary>
+        public ActionResult ArticlesByCategory(int categoryId)
+        {
+            int pageSize = 10;
+            int pageIndex = 1;
+            int totalNumber;
+            List<Article> list = _articleService.GetArticlesByCategoryID(categoryId, pageSize, pageIndex, out totalNumber);
+            return PartialView("ArticleList", list);
+        }
+
+
+
 
         ///// <summary>
         ///// 顶部导航栏的搜索功能

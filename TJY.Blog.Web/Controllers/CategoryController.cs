@@ -24,7 +24,7 @@ namespace TJY.Blog.Web.Controllers
         public ActionResult CategoryList()
         {
             List<Category> list = _categoryService.GetCategoryList();
-            return PartialView();
+            return PartialView(list);
         }
 
     }

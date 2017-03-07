@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model TJY.Blog.Web.Models.VMLogin
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -16,14 +18,14 @@
         <div class="layui-form-item">
           <label class="layui-form-label">登录名</label>
           <div class="layui-input-block">
-            <input type="text" name="loginname" required lay-verify="required" placeholder="请输入登录名..." autocomplete="off" class="layui-input">
+            <input type="text" name="loginname" required lay-verify="required" placeholder="请输入登录名..." autocomplete="off" class="layui-input" value="@Model.LoginName">
           </div>
         </div>
 
         <div class="layui-form-item">
           <label class="layui-form-label">密码</label>
           <div class="layui-input-block">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码..." autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码..." autocomplete="off" class="layui-input" value="@Model.Password">
           </div>
         </div>
 
@@ -42,7 +44,7 @@
         </div>
 
         <div class="layui-form-item">
-          <a href="#" style="float:right;">忘记密码？点一下我</a>
+          <a href="/Admin/Account/ForgetPwd" style="float:right;">忘记密码？点一下我</a>
         </div>
       </div><!--layui-form end-->
     </div><!--layui-field-box end-->

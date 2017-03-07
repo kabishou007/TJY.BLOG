@@ -27,7 +27,6 @@ namespace TJY.Blog.Web.Controllers
         {
             _articleService.AddReadNumber(articleId);
             Article article = _articleService.GetArticleByID(articleId);
-            ViewBag.CommentCount = article.Comments.Count;
             return View(article);
         }
 
@@ -55,6 +54,9 @@ namespace TJY.Blog.Web.Controllers
             List<Article> list = _articleService.GetTopReadArticles(10);
             return PartialView(list);
         }
+
+        
+
 
     }
 }

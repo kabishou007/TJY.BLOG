@@ -1,5 +1,11 @@
-﻿@*阅读排行*@
+﻿@*首页-阅读排行*@
 @model List<TJY.Blog.Model.Article> 
 
-
-阅读排行
+<ul>
+  @{
+    foreach (var article in Model)
+    {
+      <li><a href="/Article/Index/@article.ID">@(article.Title)(@article.ReaderNumber)</a></li>
+    }
+  }
+</ul>

@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using TJY.Blog.Data.ModelMap;
 
-
 namespace TJY.Blog.Data
 {
     internal class EFDatabaseContext : DbContext
@@ -11,15 +10,17 @@ namespace TJY.Blog.Data
         public EFDatabaseContext() : base("name=EFDatabaseContext")
         {
             //实体模型改变时，自动迁移到最新版本
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFDatabaseContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFDatabaseContext, Migrations.Configuration>());
             //实体模型改变时，重建数据库
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFDatabaseContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFDatabaseContext>());
         }
 
-        public DbSet<Account> Users { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Category> ArticleCategories { get; set; }
+        public DbSet<ArticleState> ArticleStates { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<OperationLog> OperationLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
