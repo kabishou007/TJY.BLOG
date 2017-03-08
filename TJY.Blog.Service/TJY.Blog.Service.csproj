@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\IAccountAdminService.cs" />
+    <Compile Include="Admin\ILogAdminService.cs" />
+    <Compile Include="Admin\Implements\LogAdminService.cs" />
     <Compile Include="Admin\Implements\StateAdminService.cs" />
     <Compile Include="Admin\IStateAdminService.cs" />
     <Compile Include="Admin\ICategoryAdminService.cs" />

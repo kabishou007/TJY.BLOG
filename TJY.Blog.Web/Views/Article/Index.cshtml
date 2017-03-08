@@ -4,15 +4,15 @@
 <div class="layui-main">
   <div class="title">文章标题</div>
   <blockquote class="layui-elem-quote">
-    <span>阅读(@Model.ReaderNumber)</span>
-    <span>点赞(@Model.Like)</span>
-    <span>评论(@Model.Comments.Count)</span>
-    <span>写作时间：@Model.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+    <span><i class="layui-icon">&#xe60e; </i>时间：@Model.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+    <span><i class="layui-icon">&#xe612; </i>浏览(@Model.ReaderNumber)</span>
+    <span><i class="layui-icon">&#xe600; </i>喜欢(@Model.Like)</span>
+    <span><i class="layui-icon">&#xe63a; </i>评论(@Model.Comments.Count)</span>
   </blockquote>
   <div class="content">@Model.Content</div>
 </div>
 <div class="buttonBar">
-  <button class="layui-btn layui-btn-warm layui-btn-small"><i class="layui-icon">&#xe600; </i>点 赞(@Model.Like)</button>
+  <button class="layui-btn layui-btn-warm layui-btn-small"><i class="layui-icon">&#xe600; </i>喜 欢(@Model.Like)</button>
   <button class="layui-btn layui-btn-normal layui-btn-small"><i class="layui-icon">&#xe64c; </i>转 载</button>
 </div>
 <div class="comment">

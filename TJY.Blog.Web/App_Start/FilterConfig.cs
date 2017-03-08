@@ -8,9 +8,9 @@ namespace TJY.Blog.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            //filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute());
             //注册自定义过滤器
-            filters.Add(DependencyResolver.Current.GetService<CustomExceptionAttribute>());
+            //filters.Add(DependencyResolver.Current.GetService<CustomExceptionAttribute>());
             
         }
     }

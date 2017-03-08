@@ -2,10 +2,8 @@
 @model List<TJY.Blog.Model.Category>
 
 <ul>
-  @{
-    foreach (var category in Model)
+    @foreach (var category in Model)
     {
       <li><a href="/Search/ArticlesByCategory/@category.ID)" class="layui-btn layui-btn-normal">@(category.Name) (@category.ArticleCount)</a></li>
     }
-  }
 </ul>

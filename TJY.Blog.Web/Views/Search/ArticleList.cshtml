@@ -1,1 +1,28 @@
-﻿
+﻿@*文章搜索结果列表*@
+@model List<TJY.Blog.Model.Article>
+
+
+@if (Model.Count <= 0)
+{
+  <div>没有搜索到结果哦~</div>
+}
+else
+{
+  foreach (var article in Model)
+  {
+    <div class="article">
+      <div class="title">@article.Title</div>
+      <div class="meta">
+        <span><i class="layui-icon">&#xe60e; </i>时间：@article.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+        <span><i class="layui-icon">&#xe612; </i>浏览(@article.ReaderNumber)</span>
+        <span><i class="layui-icon">&#xe600; </i>喜欢(@article.Like)</span>
+        <span><i class="layui-icon">&#xe63a; </i>评论(@article.Comments.Count)</span>
+      </div>
+      @{
+    string content = article.Content.Length <= 100 ? article.Content + "..." : article.Content.Substring(0, 100) + "...";
+      }
+      <div class="content">@content</div>
+      <div style="float:right"><a href="/Article/Index/@article.ID">阅读全文</a></div>
+    </div>
+  }
+}

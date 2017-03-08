@@ -14,7 +14,7 @@
   <fieldset class="layui-elem-field">
     <legend>TJY BLOG 后台登录</legend>
     <div class="layui-field-box">
-      <div class="layui-form">
+      <form class="layui-form" action="/Admin/Account/Login">
         <div class="layui-form-item">
           <label class="layui-form-label">登录名</label>
           <div class="layui-input-block">
@@ -30,13 +30,6 @@
         </div>
 
         <div class="layui-form-item">
-          <label class="layui-form-label">记住我？</label>
-          <div class="layui-input-block">
-            <input type="checkbox" name="rememberme" lay-skin="switch" lay-text="好|不好">
-          </div>
-        </div>
-
-        <div class="layui-form-item">
           <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="login">登录</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -46,7 +39,7 @@
         <div class="layui-form-item">
           <a href="/Admin/Account/ForgetPwd" style="float:right;">忘记密码？点一下我</a>
         </div>
-      </div><!--layui-form end-->
+      </form><!--layui-form end-->
     </div><!--layui-field-box end-->
   </fieldset>
 

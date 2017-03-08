@@ -1,11 +1,16 @@
 ﻿@*首页-阅读排行*@
-@model List<TJY.Blog.Model.Article> 
+@model List<TJY.Blog.Model.Article>
 
-<ul>
-  @{
-    foreach (var article in Model)
+@if (Model.Count <= 0)
+{
+  <div>暂时没有文章哦~</div>
+}
+else
+{
+  <ul>
+    @foreach (var article in Model)
     {
       <li><a href="/Article/Index/@article.ID">@(article.Title)(@article.ReaderNumber)</a></li>
     }
-  }
-</ul>
+  </ul>
+}

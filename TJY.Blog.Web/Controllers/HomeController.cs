@@ -10,14 +10,6 @@ namespace TJY.Blog.Web.Controllers
 {
     public class HomeController : Controller
     {
-        //private ICategoryService _categoryService;
-        //private IArticleService _articleService;
-        //public HomeController(ICategoryService categoryService,IArticleService articleService)
-        //{
-        //    _categoryService=categoryService;
-        //    _articleService = articleService;
-        //}
-
         /// <summary>
         /// 博客首页
         /// </summary>
@@ -25,8 +17,6 @@ namespace TJY.Blog.Web.Controllers
         {
             return View();
         }
-
-        
 
     }
 }
