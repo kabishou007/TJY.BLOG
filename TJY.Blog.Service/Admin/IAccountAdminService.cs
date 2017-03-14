@@ -33,6 +33,11 @@ namespace TJY.Blog.Service.Admin
         bool EditAccount(Account account);
 
         /// <summary>
+        /// 上传头像图片
+        /// </summary>
+        bool UploadImg(string imgPath);
+
+        /// <summary>
         /// 获得账户信息(博客系统只有一个账号，因此在实现上采用获取所有并取第一个的方式)
         /// </summary>
         Account GetAccount();

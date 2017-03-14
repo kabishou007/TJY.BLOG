@@ -21,10 +21,11 @@ namespace TJY.Blog.Service.Admin.Implements
         public bool SaveArticle(Article article)
         {
             int draftStateID=_unitOfWork.GetRepository<ArticleState>().Get(s => s.Name == "草稿").ID;
-            if (article.StateID!=draftStateID)
-            {
-                article.StateID = draftStateID;
-            }
+            //if (article.StateID!=draftStateID)
+            //{
+            //    article.StateID = draftStateID;
+            //}
+            article.StateID = draftStateID;
             _unitOfWork.GetRepository<Article>().Add(article);
             return _unitOfWork.Commit();
         }
@@ -32,10 +33,11 @@ namespace TJY.Blog.Service.Admin.Implements
         public bool SaveAndPublishArticle(Article article)
         {
             int publishStateID = _unitOfWork.GetRepository<ArticleState>().Get(s => s.Name == "发布").ID;
-            if (article.StateID != publishStateID)
-            {
-                article.StateID = publishStateID;
-            }
+            //if (article.StateID != publishStateID)
+            //{
+            //    article.StateID = publishStateID;
+            //}
+            article.StateID = publishStateID;
             _unitOfWork.GetRepository<Article>().Add(article);
             ModifyArticleCount(article.CategoryID, true);
             return _unitOfWork.Commit();

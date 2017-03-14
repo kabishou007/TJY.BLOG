@@ -1,17 +1,57 @@
-﻿@{
-    Layout = null;
-}
+﻿@model TJY.Blog.Model.Account
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>TJY Blog 账号编辑</title>
+  <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+  <link href="~/Content/css/admin.account.edit.css" rel="stylesheet" />
 </head>
+
 <body>
-    <div>
-        
+  <div class="layui-form">
+    <div class="header-img">
+      <img src="@Model.Image" />
+      <input type="file" name="file（上传头像）" class="layui-upload-file">
     </div>
+    <div class="account-info">
+      <div class="layui-form-item">
+        <label class="layui-form-label">登录名</label>
+        <div class="layui-input-block">
+          <input type="text" name="loginname" layui-verify="loginname" class="layui-input" value="@Model.LoginName">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+          <input type="text" name="nickname" lay-verify="nickname" class="layui-input" value="@Model.NickName">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+          <input type="text" name="email" lay-verify="email" class="layui-input" value="@Model.Email">
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">人生信条</label>
+        <div class="layui-input-block">
+          <textarea name="motto" lay-verify="motto" class="layui-textarea">@Model.Motto</textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button id="btnSave" class="layui-btn">保存</button>
+          <button id="btnCancel" class="layui-btn">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="~/Content/layui/lay/dest/layui.all.js"></script>
+  <script src="~/Content/js/admin.account.edit.js" charset="gbk"></script>
 </body>
 </html>
+

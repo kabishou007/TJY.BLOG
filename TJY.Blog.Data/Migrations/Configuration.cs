@@ -16,15 +16,15 @@ namespace TJY.Blog.Data.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            context.Accounts.AddOrUpdate(
-              new Model.Account
-              {
-                  LoginName = "admin",
-                  Password = "123456",
-                  NickName = "Kevin Tang",
-                  Email = "kevintangtjy@163.com"
-              });
-            context.SaveChanges();
+            //context.Accounts.AddOrUpdate(
+            //  new Model.Account
+            //  {
+            //      LoginName = "admin",
+            //      Password = "123456",
+            //      NickName = "Kevin Tang",
+            //      Email = "kevintangtjy@163.com"
+            //  });
+            //context.SaveChanges();
         }
     }
 }

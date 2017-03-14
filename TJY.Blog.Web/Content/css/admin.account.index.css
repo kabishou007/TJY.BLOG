@@ -1,0 +1,24 @@
+﻿.layui-form {
+    padding:10px;
+    width: 505px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    border:solid 1px;
+}
+
+.header-img{
+    width:100px;
+    height: 100px;
+    float: left;
+}
+
+.header-img img{
+    width:100%;
+    height: 100%;
+}
+
+.account-info{
+    width:400px;
+    display: inline-block;
+}

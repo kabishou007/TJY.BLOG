@@ -21,7 +21,7 @@ namespace TJY.Blog.Service.Admin.Implements
         #region 实现接口
         public bool Login(string loginName, string password)
         {
-            string aesPwd=new AESCrypt().Encrypt(password);
+            string aesPwd=new AESCrypt().Encrypt(password,"tjy");//指定key再加密就可以和数据库中的值一致
             Account account = _unitOfWork.GetRepository<Account>().Get(a => a.LoginName == loginName && a.Password == aesPwd);
             return account != null ? true : false;
         }
@@ -43,10 +43,15 @@ namespace TJY.Blog.Service.Admin.Implements
             return false;
         }
 
+        public bool UploadImg(string imgPath)
+        {
+            //TODO:后台上传图片
+            return true;
+        }
 
         public bool ForgetPwd()
         {
-            //TODO:使用邮件服务，将密码发送至账户指定邮箱
+           
             return true;
         }
 
@@ -57,5 +62,8 @@ namespace TJY.Blog.Service.Admin.Implements
         } 
 
         #endregion
+
+
+       
     }
 }

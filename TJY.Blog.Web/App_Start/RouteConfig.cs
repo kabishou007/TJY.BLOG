@@ -23,9 +23,9 @@ namespace TJY.Blog.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
-                //namespaces: new string[] { "TJY.Blog.Web.Areas.Admin.Controllers" }
-            ).DataTokens.Add("Area", "Admin");
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
+                namespaces: new string[] { "TJY.Blog.Web.Admin.Controllers" }
+            ).DataTokens.Add("area", "Admin");
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿.layui-form{
+  width:1208px;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.side{
+  width:300px;
+  padding: 10px 2px;
+  display: inline-block;
+}
+
+.main{
+  width:900px;
+  padding:10px 2px;
+  float:right;
+}

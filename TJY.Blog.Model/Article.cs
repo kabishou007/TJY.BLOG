@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +15,6 @@ namespace TJY.Blog.Model
 
         [DisplayName("标题")]
         [Required]
-        [StringLength(50)]
         public string Title { get; set; }
 
         [DisplayName("内容")]
